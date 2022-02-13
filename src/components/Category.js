@@ -1,6 +1,7 @@
 import { Container, Row } from "react-bootstrap";
 import BookCard from "./BookCard";
 const Category = (props) => {
+
   return (
     <div>
       <h1>{props.title}</h1>
@@ -12,8 +13,9 @@ const Category = (props) => {
               item.shelf.toLowerCase() ===
               props.title.split(" ").join("").toLowerCase()
             ) {
-              return <BookCard key={item.id} data={item} />;
+              return <BookCard key={item.id} data={item} changeHandler={props.changeHandler}/>;
             }
+            else return false
           })}
         </Row>
       </Container>

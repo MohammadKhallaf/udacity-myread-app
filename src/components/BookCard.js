@@ -8,15 +8,24 @@ const BookCard = (props) => {
   // set to -> want to read
   const toReadHandler = (event) => {
     console.log(event.target);
-    udAPI.put(`/books/${bookData.id}`, {
-      shelf: "wantToRead",
-    });
+    udAPI
+      .put(`/books/${bookData.id}`, {
+        shelf: "wantToRead",
+      })
+      .then((response) => {
+        console.log(response.data);
+        props.changeHandler(true);
+      });
   };
   // set to -> currently read
   const toCurrentReadHandler = (event) => {
     console.log(event.target);
     udAPI.put(`/books/${bookData.id}`, {
       shelf: "currentlyReading",
+    })
+    .then((response) => {
+      console.log(response.data);
+      props.changeHandler(true);
     });
   };
   // set to -> read
@@ -24,6 +33,10 @@ const BookCard = (props) => {
     console.log(event.target);
     udAPI.put(`/books/${bookData.id}`, {
       shelf: "read",
+    })
+    .then((response) => {
+      console.log(response.data);
+      props.changeHandler(true);
     });
   };
   return (
@@ -36,7 +49,10 @@ const BookCard = (props) => {
 
       <Card.Body>
         <Card.Title className="fs-5">{bookData.title}</Card.Title>
-        <Card.Subtitle>{bookData.authors[0]}</Card.Subtitle>
+        {bookData.authors.map( (item,index)=>
+
+        <Card.Subtitle className="text-muted fs-6" key={index}>{item}</Card.Subtitle>
+        )}
       </Card.Body>
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-key">
