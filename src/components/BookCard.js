@@ -1,17 +1,16 @@
 import { Card, Dropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { updateShelves } from "../store";
-import { udAPI } from "../store/BookAPI";
 
 const BookCard = (props) => {
-  const bookData = props.data;
   const {
     id: bookID,
     authors,
     title,
     shelf,
-    imageLinks: { thumbnail: image },
+    imageLinks: { thumbnail: image } = "",
   } = props.data;
+  
   const dispatch = useDispatch();
 
   // Update The shelf
@@ -27,13 +26,18 @@ const BookCard = (props) => {
   const readHandler = (event) => {
     dispatch(updateShelves(bookID, "read"));
   };
+  const noneHandler = (event) => {
+    dispatch(updateShelves(bookID, "none"));
+  };
   return (
     <Card style={{ maxWidth: "15rem" }}>
-      <Card.Img
+      {image &&
+        <Card.Img
         src={image}
         alt={title}
         style={{ aspectRatio: "1", objectFit: "cover" }}
-      />
+        />
+      }
 
       <Card.Body>
         <Card.Title className="fs-5">{title}</Card.Title>
@@ -62,7 +66,7 @@ const BookCard = (props) => {
             {shelf === "read" && <span>✓ </span>}
             Read
           </Dropdown.Item>
-          <Dropdown.Item href="#/action-3">
+          <Dropdown.Item onClick={noneHandler}>
             {!(shelf)  && <span>✓ </span>}
             None
           </Dropdown.Item>
