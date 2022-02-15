@@ -45,7 +45,7 @@ The following endpoints are available:
 // create an instance 
 export const udAPI = axios.create({
   baseURL: "https://reactnd-books-api.udacity.com",
-  timeout: 3000,
+  timeout: 10000,
   headers: {
     // Accept: "application/json",
     Authorization: token,
