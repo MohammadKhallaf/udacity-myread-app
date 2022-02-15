@@ -15,6 +15,7 @@
 - React Router v6
 - React Redux & Redux Toolkit
 - Axios
+- Bootstrap & React-Bootstrap
 
 ## App structure
 
