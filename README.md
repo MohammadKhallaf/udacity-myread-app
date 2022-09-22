@@ -34,3 +34,6 @@ Site
 
 - Site tab-icon "book icon" - [Flaticon]("https://www.flaticon.com/free-icons/book")
 - API : Udacity books API
+
+### Deployment
+[![Netlify Status](https://api.netlify.com/api/v1/badges/404d6b7f-6bfe-4d66-976d-eb532f233c64/deploy-status)](https://app.netlify.com/sites/ud-myread/deploys)
